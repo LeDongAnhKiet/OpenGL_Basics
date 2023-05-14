@@ -17,3 +17,5 @@
 --> Thêm thư mục Libraries/include --> Chọn OK --> Library Directories: <Edit...> --> Thêm thư mục Libraries/lib --> Chọn OK
 --> Linker: Input: <Edit...> --> Nhập glfw3.lib <Enter> opengl32.lib --> Chọn OK
 - Sao chép glad.c vào thư mục Source Files, nơi mà tạo các file .cpp
+
+  Tham khảo: youtube.com/watch?v=45MIykWJ-C4

@@ -8,7 +8,7 @@
 
 //tọa độ các điểm
 GLfloat vertices[] =
-{//						TỌA ĐỘ					|		MÀU SẮC		|
+{
 	// điểm trái dưới
 	-0.5f , -0.5f * float(sqrt(5))	   / 5, 0.0f, 0.8f, 0.3f , 0.02f,
 	// điểm phải dưới

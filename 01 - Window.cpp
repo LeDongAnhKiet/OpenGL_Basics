@@ -1,6 +1,6 @@
-﻿#include<iostream>
-#include<glad/glad.h>
-#include<GLFW/glfw3.h>
+#include <iostream>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 int main() 
 {
@@ -38,8 +38,10 @@ int main()
 
 	// chạy window = vòng lặp
 	while (!glfwWindowShouldClose(window))
+	{
 		glfwPollEvents();
-
+	}
+	
 	// hủy window trước khi đóng chương trình
 	glfwDestroyWindow(window);
 	// hủy GLFW trước khi đóng chương trình

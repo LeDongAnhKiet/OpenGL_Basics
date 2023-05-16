@@ -1,28 +1,29 @@
-﻿#include <iostream>
+#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 #include "ElementsBufferObject.h"
 #include "Shader.h"
 #include "VertexArrayObject.h"
 #include "VertexBufferObject.h"
 
-//tọa độ các điểm
+// tọa độ các điểm
 GLfloat vertices[] =
 {
 	// điểm trái dưới
-	-0.5f	 , -0.5f * float(sqrt(5))	  / 5, 0.0f,
+	-0.5f	 , -0.5f * float(sqrt(5))     / 5, 0.0f,
 	// điểm phải dưới
-	0.5f	 , -0.5f * float(sqrt(5))	  / 5, 0.0f,
+	0.5f	 , -0.5f * float(sqrt(5))     / 5, 0.0f,
 	// điểm trên cùng
 	0.0f	 , 0.5f  * float(sqrt(5)) * 3 / 5, 0.0f,
 	// trung điểm trái
-	-0.5f / 2, 0.5f  * float(sqrt(5))	  / 5, 0.0f,
+	-0.5f / 2, 0.5f  * float(sqrt(5))     / 5, 0.0f,
 	// trung điểm phải
-	0.5f / 2 , 0.5f  * float(sqrt(5))	  / 5, 0.0f,
+	0.5f / 2 , 0.5f  * float(sqrt(5))     / 5, 0.0f,
 	// trung điểm dưới
-	0.0f	 , -0.5f * float(sqrt(5))	  / 5, 0.0f
+	0.0f	 , -0.5f * float(sqrt(5))     / 5, 0.0f
 };
-//thứ tự các điểm
+// thứ tự các điểm
 GLuint indices[] =
 {
 	0, 3, 5,	// tam giác trái 

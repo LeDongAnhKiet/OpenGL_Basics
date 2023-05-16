@@ -11,6 +11,7 @@ Tạo Filter mới để chứa các file shader:
 - Main.cpp
 - <File cpp khác nếu có...>
 - glad.c
+
 Tạo Filter mới để chứa các file cùng tên với các file .h:
 - Shader.cpp
 - VAO.cpp

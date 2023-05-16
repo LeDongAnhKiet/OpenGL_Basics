@@ -14,7 +14,7 @@ const char* fragmentShaderSource = "#version 330 core\n"
 "out vec4 FragColor;\n"
 "void main()\n"
 "{\n"
-"	FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
+"	FragColor = vec4(0.82f, 0.37f, 0.05f, 1.08f);\n"
 "}\n\0";
 
 int main()
@@ -64,7 +64,7 @@ int main()
 		// điểm phải dưới
 		0.5f, -0.5f * float(sqrt(5)) / 5, 0.0f,
 		// điểm trên đầu
-		0.0f, 0.5f * float(sqrt(5)) * 2 / 5, 0.0f
+		0.0f, 0.5f * float(sqrt(5)) * 3 / 5, 0.0f
 	};
 
 	// tạo tham chiếu Vertex Array Object và Vertex Buffer Object
@@ -87,13 +87,13 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
+	glClearColor(1.2f, 0.75f, 0.35f, 1.2f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glfwSwapBuffers(window);
 
 	while (!glfwWindowShouldClose(window))
 	{
-		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
+		glClearColor(0.15f, 0.02f, 0.18f, 1.5f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		// gọi OpenGL sử dụng shader program
 		glUseProgram(shaderProgram);

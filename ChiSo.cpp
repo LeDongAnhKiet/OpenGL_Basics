@@ -17,8 +17,6 @@ const char* fragmentShaderSource = "#version 330 core\n"
 "   FragColor = vec4(0.82f, 0.37f, 0.05f, 1.08f);\n"
 "}\n\0";
 
-
-
 int main()
 {
 	glfwInit();
@@ -69,9 +67,9 @@ int main()
 	// thứ tự các điểm
 	GLuint indices[] =
 	{
-		0, 3, 5,	// tam giác trái 
-		3, 2, 4,	// tam giác phải
-		5, 4, 1		// tam giác trên
+		0, 3, 5, // tam giác trái 
+		3, 2, 4, // tam giác phải
+		5, 4, 1	 // tam giác trên
 	};
 
 	GLuint VAO, VBO, EBO;

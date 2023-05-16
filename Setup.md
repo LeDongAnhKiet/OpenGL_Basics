@@ -1,6 +1,6 @@
 # Tự học OpenGL
 
-  Setup / Cài đặt:
+  Cách cài đặt:
 - cmake.org/download/ --> Nếu sử dụng Windows thì chọn Windows win64-x64 Installer với version mới nhất
 - glfw.org/download.html --> Nhấn vào Source package --> giải nén nó, tạo thư mục mới trong nó, đặt tên là build
 - glad.dav1d.de --> Ở mục API: chọn gl: Version 3.3, Profile: Core --> Nhấn vào Generate --> Chọn glad.zip vào giải nén nó
@@ -19,3 +19,4 @@
 - Sao chép glad.c vào thư mục Source Files, nơi mà tạo các file .cpp
 
   Tham khảo: youtube.com/watch?v=45MIykWJ-C4
+             https://github.com/VictorGordan/opengl-tutorials

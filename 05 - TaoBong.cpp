@@ -6,31 +6,23 @@
 #include "VertexArrayObject.h"
 #include "VertexBufferObject.h"
 
-//tọa độ các điểm
+// tọa độ các điểm
 GLfloat vertices[] =
-{
-	// điểm trái dưới
-	-0.4f , -0.4f * float(sqrt(5))	  / 5, 0.0f, 0.8f, 0.3f , 0.02f,
-	// điểm phải dưới
-	0.4f  , -0.4f * float(sqrt(5))	  / 5, 0.0f, 0.8f, 0.3f , 0.02f,
-	// điểm trên cùng
-	0.0f  , 0.4f * float(sqrt(5)) * 3 / 5, 0.0f, 1.0f, 0.6f , 0.32f,
-	// trung điểm trái
-	-0.4f / 2, 0.4f * float(sqrt(5))  / 5, 0.0f, 0.9f, 0.45f, 0.17f,
-	// trung điểm phải
-	0.4f  / 2, 0.4f * float(sqrt(5))  / 5, 0.0f, 0.9f, 0.45f, 0.17f,
-	// trung điểm dưới
-	0.0f  , -0.4f * float(sqrt(5))	  / 5, 0.0f, 0.8f, 0.3f , 0.02f
+{		
+	-0.4f , -0.4f * float(sqrt(5))	  / 5, 0.0f, 0.8f, 0.3f , 0.02f,	// điểm trái dưới	
+	0.4f  , -0.4f * float(sqrt(5))	  / 5, 0.0f, 0.8f, 0.3f , 0.02f,	// điểm phải dưới
+	0.0f  , 0.4f * float(sqrt(5)) * 3 / 5, 0.0f, 1.0f, 0.6f , 0.32f,	// điểm trên cùng
+	-0.4f / 2, 0.4f * float(sqrt(5))  / 5, 0.0f, 0.9f, 0.45f, 0.17f,	// trung điểm trái
+	0.4f  / 2, 0.4f * float(sqrt(5))  / 5, 0.0f, 0.9f, 0.45f, 0.17f,	// trung điểm phải
+	0.0f  , -0.4f * float(sqrt(5))	  / 5, 0.0f, 0.8f, 0.3f , 0.02f		// trung điểm dưới
 };
-//thứ tự các điểm
+// thứ tự các điểm
 GLuint indices[] =
 {
-	0, 3, 5,	// tam giác trái 
-	3, 2, 4,	// tam giác phải
+	0, 3, 5,	  // tam giác trái 
+	3, 2, 4,	 // tam giác phải
 	5, 4, 1		// tam giác trên
 };
-
-
 
 int main()
 {

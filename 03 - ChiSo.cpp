@@ -24,7 +24,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(800, 800, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 800, "3 Tam giac nho thanh 1 Tam giac lon", NULL, NULL);
 	if (window == NULL)
 		glfwTerminate();
 

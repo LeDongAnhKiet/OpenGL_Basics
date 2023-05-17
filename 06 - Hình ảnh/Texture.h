@@ -1,8 +1,8 @@
-﻿#ifndef TEXTURE_CLASS_H
+#ifndef TEXTURE_CLASS_H
 #define TEXTURE_CLASS_H
 #include <glad/glad.h>
 #include <stb/img.h>
-#include "Shader.h"
+#include "shaderClass.h"
 
 class Texture
 {
@@ -12,7 +12,7 @@ public:
 	Texture(const char* img, GLenum txType, GLenum slot, GLenum fm, GLenum pxType);
 
 	// gán đơn vị ảnh vào hình ảnh
-	void txUnit(Shader shade, const char* uni, GLuint unit);
+	void texUnit(Shader& shader, const char* uni, GLuint unit);
 	// nối ảnh
 	void Bind();
 	// ngắt nối ảnh

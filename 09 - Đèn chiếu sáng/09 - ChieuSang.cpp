@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stb/img.h>
@@ -40,7 +40,7 @@ GLfloat diem[] =
 };
 GLuint thutu[] =
 {
-	 0,  1,  2,		// mặt đáy
+	 0,  1,  2,	// mặt đáy
 	 0,  2,  3,    // hướng đáy
 	 4,  6,  5,   // hướng trái
 	 7,  9,  8,  // hướng khuất

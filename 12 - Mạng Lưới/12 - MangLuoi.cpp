@@ -3,7 +3,7 @@
 const unsigned int doRong = 800, doCao = 800;
 // các tọa độ điểm
 ToaDo diem[] =
-{ //			Vị trí			  /			  Màu sắc		   /		  Kết cấu			/		 Thường			//
+{ //			Vị trí		    /		Màu sắc		 /	    Kết cấu	      /		Thường		//
 	ToaDo{ glm::vec3(-1.0f, 0.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f) },
 	ToaDo{ glm::vec3(-1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f) },
 	ToaDo{ glm::vec3( 1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f) },

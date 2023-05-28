@@ -84,7 +84,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	
-	GLFWwindow* window = glfwCreateWindow(doRong, doCao, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(doRong, doCao, "Den chieu sang", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Khởi tạo Window thất bại\n";

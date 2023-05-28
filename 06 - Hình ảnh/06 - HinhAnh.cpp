@@ -11,13 +11,13 @@
 // tọa độ các điểm
 GLfloat vertices[] =
 {
-		// điểm trái dưới
+// điểm trái dưới
 	-0.5f, -0.5f, 0.0f,	1.0f, 0.0f, 0.0f,	0.0f, 0.0f,
-		// điểm trái trên
+// điểm trái trên
 	-0.5f, 0.5f , 0.0f,	0.0f, 1.0f, 0.0f,	0.0f, 1.0f,
-		// điểm phải trên
+// điểm phải trên
 	0.5f , 0.5f , 0.0f,	0.0f, 0.0f, 1.0f,	1.0f, 1.0f,
-		// điểm phải dưới
+// điểm phải dưới
 	0.5f , -0.5f, 0.0f,	1.0f, 1.0f, 1.0f,	1.0f, 0.0f
 };
 // thứ tự các điểm
@@ -34,7 +34,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	
-	GLFWwindow* window = glfwCreateWindow(800, 800, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 800, "Hinh anh", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window\n";

@@ -57,7 +57,6 @@ GLuint thutuSang[] =
 	4, 6, 7
 };
 
-
 int main()
 {
 	glfwInit();

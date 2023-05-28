@@ -1,4 +1,4 @@
-﻿#include "Mesh.h"
+#include "Mesh.h"
 
 const unsigned int doRong = 800, doCao = 800;
 // các tọa độ điểm
@@ -52,7 +52,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(doRong, doCao, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(doRong, doCao, "Kieu sang khac nhau", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Khởi tạo Window thất bại\n";

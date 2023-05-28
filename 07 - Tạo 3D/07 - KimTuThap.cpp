@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Shader.h"
@@ -15,7 +15,7 @@ const unsigned int wid = 800;
 const unsigned int heg = 800;
 
 GLfloat vertices[] =
-{ //     Tọa độ điểm     /        Màu sắc      /   Tọa độ ảnh  //
+{ //     Tọa độ điểm     /        Màu sắc      /   Tọa độ ảnh    //
 	-0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f,	0.0f, 0.0f,
 	-0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	5.0f, 0.0f,
 	 0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	0.0f, 0.0f,
@@ -39,7 +39,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(wid, heg, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(wid, heg, "Kim tu thap", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;

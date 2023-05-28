@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stb/img.h>
@@ -16,7 +16,7 @@
 const unsigned int doRong = 800, doCao = 800;
 // các tọa độ điểm
 GLfloat diem[] =
-{ //		Vị trí		/		Màu sắc		  /		Kết cấu		/		Thường		//
+{ //		Vị trí	  /	     Màu sắc	    /	   Kết cấu	/	Thường	  //
 	-1.0f, 0.0f,  1.0f,     0.0f, 0.0f, 0.0f, 	 0.0f, 0.0f,      0.0f, 1.0f, 0.0f,
 	-1.0f, 0.0f, -1.0f,     0.0f, 0.0f, 0.0f,	 0.0f, 1.0f,      0.0f, 1.0f, 0.0f,
 	 1.0f, 0.0f, -1.0f,     0.0f, 0.0f, 0.0f,	 1.0f, 1.0f,      0.0f, 1.0f, 0.0f,
@@ -65,7 +65,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(doRong, doCao, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(doRong, doCao, "Kieu sang khac nhau", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Khởi tạo Window thất bại\n";

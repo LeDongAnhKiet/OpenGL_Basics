@@ -1,4 +1,4 @@
-﻿#include "Model.h"
+#include "Model.h"
 
 const unsigned int doRong = 800, doCao = 800;
 

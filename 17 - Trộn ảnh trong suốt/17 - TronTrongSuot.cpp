@@ -1,4 +1,4 @@
-﻿#include "Model.h"
+#include "Model.h"
 
 const unsigned int doRong = 800, doCao = 800, nWins = 50;
 float kcNhin[nWins];
@@ -76,8 +76,7 @@ int main()
 		ktg = tdht - tdt; dem++;
 		if (ktg >= 1.0 / 30.0)
 		{
-			std::string fps = std::to_string((1.0 / ktg) * dem),
-				ms = std::to_string((ktg / dem) * 1000),
+			std::string fps = std::to_string((1.0 / ktg) * dem), ms = std::to_string((ktg / dem) * 1000),
 				tieuDe = "Tron hinh anh trong suot - " + fps + " FPS / " + ms + " ms";
 			glfwSetWindowTitle(window, tieuDe.c_str());
 			tdt = tdht; dem = 0;
@@ -97,7 +96,6 @@ int main()
 			windows.Ve(shaderWindows, gocNhin, viTriWins[thuTuWins[i]], glm::quat(1.0f, 0.0f, xoayWins[thuTuWins[i]], 0.0f));
 			kcNhin[i] = glm::length(gocNhin.ViTri - viTriWins[i]);
 		}
-		
 		qsort(thuTuWins, nWins, sizeof(unsigned int), soSanh);
 		glDisable(GL_BLEND);
 		glEnable(GL_CULL_FACE);

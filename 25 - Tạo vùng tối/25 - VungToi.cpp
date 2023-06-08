@@ -1,0 +1,153 @@
+﻿#include "Model.h"
+
+const GLuint doRong = 800, doCao = 800;
+GLfloat dinh[] =
+{
+	 1.0f, -1.0f,	1.0f, 0.0f,
+	-1.0f, -1.0f,	0.0f, 0.0f,
+	-1.0f,  1.0f,	0.0f, 1.0f,
+
+	 1.0f,  1.0f,	1.0f, 1.0f,
+	 1.0f, -1.0f,	1.0f, 0.0f,
+	-1.0f,  1.0f,	0.0f, 1.0f
+};
+GLuint mau = 12;
+float gamma = 2.2f;
+
+int main()
+{
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	GLFWwindow* window = glfwCreateWindow(doRong, doCao, "Shadow Maps", NULL, NULL);
+	if (window == NULL)
+	{
+		std::cout << "Khởi tạo Window thất bại\n";
+		glfwTerminate();
+		return -1;
+	}
+	glfwMakeContextCurrent(window);
+	gladLoadGL();
+	glViewport(0, 0, doRong, doCao);
+
+	Shader chuongTrinh("def.vert", "def.frag");
+	Shader shaderKhung("khung.vert", "khung.frag");
+	Shader shaderToi("toi.vert", "toi.frag");
+	glm::vec4 mauSang = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	glm::vec3 vtSang = glm::vec3(0.5f, 0.5f, 0.5f);
+
+	chuongTrinh.KichHoat();
+	glUniform4f(glGetUniformLocation(chuongTrinh.ID, "mauDen"), mauSang.x, mauSang.y, mauSang.z, mauSang.w);
+	glUniform3f(glGetUniformLocation(chuongTrinh.ID, "vtDen"), vtSang.x, vtSang.y, vtSang.z);
+	shaderKhung.KichHoat();
+	glUniform1i(glGetUniformLocation(shaderKhung.ID, "hinh"), 0);
+	glUniform1i(glGetUniformLocation(shaderKhung.ID, "gamma"), gamma);
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_FRONT);
+	glFrontFace(GL_CCW);
+	glEnable(GL_MULTISAMPLE);
+	glEnable(GL_FRAMEBUFFER_SRGB);
+
+	GocNhin gocNhin(doRong, doCao, glm::vec3(-0.5f, 0.8f, 1.0f));
+	MoHinh banDo("models/map/scene.gltf");
+	VAO vao = VAO();
+	VBO vbo = VBO(dinh, sizeof(dinh));
+
+	vao.Bind();
+	vao.LinkAttr(vbo, 0, 2, GL_FLOAT, 4 * sizeof(float), (void*)0);
+	vao.LinkAttr(vbo, 1, 2, GL_FLOAT, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+	// hậu xử lý chương trình, hình ảnh
+	FBO fbo = FBO();
+	RBO rbo = RBO(doRong, doCao, mau);
+	HinhAnh hinhAnh(doRong, doCao, mau, GL_TEXTURE_2D_MULTISAMPLE);
+	fbo.KtLoi();
+
+	// hậu xử lý khung hình
+	FBO khungFbo = FBO();
+	HinhAnh khungAnh(doRong, doCao);
+	khungFbo.KtLoi();
+	// hậu xử lý vùng tối
+	GLuint bongToi = 2048;
+	FBO toiFbo = FBO();
+	HinhAnh vungToi(bongToi, bongToi, GL_DEPTH_COMPONENT);
+	toiFbo.Bind(vungToi);
+
+	vao.Unbind();
+	vbo.Unbind();
+	fbo.Unbind();
+	rbo.Unbind();
+	khungFbo.Unbind();
+
+	// phép chiếu trực giao (vuông góc)
+	glm::mat4 trucGiao = glm::ortho(-35.0f, 35.0f, -35.0f, 35.0f),
+		huongSang = glm::lookAt(20.0f * vtSang, glm::vec3(0.0f, 0.0f, 0.0f),
+			glm::vec3(0.0f, 1.0f, 0.0f)), chieuSang = trucGiao * huongSang;
+	shaderToi.KichHoat();
+	glUniformMatrix4fv(glGetUniformLocation(shaderToi.ID, "denChieu"), 1, GL_FALSE, glm::value_ptr(chieuSang));
+
+	while (!glfwWindowShouldClose(window))
+	{
+		double tdt = 0.0, tdht = 0.0, ktg;
+		GLuint dem = 0;
+		tdht = glfwGetTime();
+		ktg = tdht - tdt; dem++;
+		if (ktg >= 1.0 / 30.0)
+		{
+			std::string fps = std::to_string((1.0 / ktg) * dem),
+				ms = std::to_string((ktg / dem) * 1000),
+				tieuDe = "Tao vung toi - " + fps + " FPS / " + ms + " ms";
+			glfwSetWindowTitle(window, tieuDe.c_str());
+			tdt = tdht; dem = 0;
+		}
+		glEnable(GL_DEPTH_TEST);
+		glViewport(0, 0, bongToi, bongToi);
+		toiFbo.Bind();
+		glClear(GL_DEPTH_BUFFER_BIT);
+		banDo.Ve(shaderToi, gocNhin);
+		toiFbo.Unbind();
+
+		glViewport(0, 0, doRong, doCao);
+		fbo.Bind();
+		glClearColor(pow(0.83f, gamma), pow(0.42f, gamma), pow(0.1f, gamma), 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glDisable(GL_CULL_FACE);
+
+		gocNhin.Inputs(window);
+		gocNhin.CapNhat(45.0f, 0.1f, 100.0f);
+		chuongTrinh.KichHoat();
+		glUniformMatrix4fv(glGetUniformLocation(chuongTrinh.ID, "denChieu"), 1, GL_FALSE, glm::value_ptr(chieuSang));
+		vungToi.Bind(2);
+		glUniform1i(glGetUniformLocation(chuongTrinh.ID, "vungToi"), 2);
+
+		banDo.Ve(chuongTrinh, gocNhin);
+		khungFbo.Bind(fbo, doRong, doCao);
+		fbo.Unbind();
+		shaderKhung.KichHoat();
+
+		vao.Bind();
+		glDisable(GL_DEPTH_TEST);
+		khungAnh.Bind();
+		hinhAnh.Bind();
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+	}
+	chuongTrinh.Xoa();
+	shaderKhung.Xoa();
+	shaderToi.Xoa();
+	hinhAnh.Xoa();
+	khungAnh.Xoa();
+
+	vao.Xoa();
+	vbo.Xoa();
+	rbo.Xoa();
+	fbo.Xoa();
+
+	glfwDestroyWindow(window);
+	glfwTerminate();
+	return 0;
+}

@@ -29,6 +29,7 @@ void main()
 	
 	vec3 phanManh = texture(hinh, txCrd).rgb;
 	float huongDen = 0.1;
+	// phoi bay huong den sang hon binh thuong
 	vec3 chinhSua = vec3(1.0f) - exp(-phanManh * huongDen);
 	MauFrag.rgb = pow(chinhSua.rgb, vec3(1.35f + gamma));
 }
